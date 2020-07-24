@@ -1,11 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import './index.scss';
 import ReactDOM from 'react-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Home from './pages/Home';
 // react router
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -14,9 +18,10 @@ function App() {
     <Router>
       <>
         <Header cartSize={2} />
-        <div>
-          <h1>dede</h1>
-        </div>
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to="/products" />} />
+          <Route exact path="/products" component={Home} />
+        </Switch>
         <Footer />
       </>
     </Router>
