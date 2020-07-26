@@ -10,20 +10,23 @@ import ReactDOM from 'react-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
+import AppProvider from './context/provider';
 // react router
 
 ReactDOM.render(<App />, document.getElementById('root'));
 function App() {
   return (
-    <Router>
-      <>
-        <Header cartSize={2} />
-        <Switch>
-          <Route exact path="/" render={() => <Redirect to="/products" />} />
-          <Route exact path="/products" component={Home} />
-        </Switch>
-        <Footer />
-      </>
-    </Router>
+    <AppProvider>
+      <Router>
+        <>
+          <Header cartSize={2} />
+          <Switch>
+            <Route exact path="/" render={() => <Redirect to="/products" />} />
+            <Route exact path="/products" component={Home} />
+          </Switch>
+          <Footer />
+        </>
+      </Router>
+    </AppProvider>
   );
 }

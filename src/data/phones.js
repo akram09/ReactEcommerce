@@ -1,4 +1,4 @@
-export const phones = [
+const phones = [
   {
     title: 'Apple iPhone 7 Plus 32 GB (Apple Türkiye Garantili)',
     category: 'phone',
@@ -525,3 +525,4 @@ export const phones = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
   },
 ];
+export default phones;
