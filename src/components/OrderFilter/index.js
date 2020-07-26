@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import './index.scss';
 export default class OrderFilter extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       selected: '',
@@ -16,13 +17,30 @@ export default class OrderFilter extends Component {
       selected: e.target.value,
     });
   }
-  removeFilter(e) {}
+
+  removeFilter() {
+    const buttons = document.getElementsByName('orderByPrice');
+    buttons.forEach((e1) => {
+      const element = e1;
+      element.checked = false;
+    });
+    this.setState({ selected: '' });
+  }
 
   render() {
     return (
       <Card>
         <Card.Header>
-          <h3>Price</h3>
+          <div className="filter-header">
+            <h2 className="filter-header__text">Price</h2>
+            {this.state.selected && (
+              <AiOutlineCloseCircle
+                onClick={this.removeFilter}
+                className="filter-header__icon"
+                size={28}
+              />
+            )}
+          </div>
         </Card.Header>
         <ListGroup>
           <ListGroupItem>
@@ -32,6 +50,7 @@ export default class OrderFilter extends Component {
                 value={ORDER_BY_ASC}
                 onChange={this.handleRadioChange}
                 type="radio"
+                name="orderByPrice"
                 className="custom-radio-btn__input"
                 id="checkbox_order_asc"
               />
@@ -45,6 +64,7 @@ export default class OrderFilter extends Component {
                 value={ORDER_BY_DESC}
                 onChange={this.handleRadioChange}
                 type="radio"
+                name="orderByPrice"
                 className="custom-radio-btn__input"
                 id="checkbox_order_desc"
               />

@@ -43,3 +43,18 @@
     background-color: #dfdfdf;
   }
 }
+.filter-header {
+  display: block;
+  position: relative;
+
+  &__text {
+    display: inline-block;
+  }
+  &__icon {
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    cursor: pointer;
+    color: dodgerblue;
+  }
+}
