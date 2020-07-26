@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import './index.scss';
+import { ORDER_BY_ASC, ORDER_BY_DESC, NO_ORDER } from '../../context/actions';
+import AppContext from '../../context';
 export default class OrderFilter extends Component {
   constructor() {
     super();
@@ -16,6 +18,7 @@ export default class OrderFilter extends Component {
     this.setState({
       selected: e.target.value,
     });
+    this.context.filterOrder(e.target.value);
   }
 
   removeFilter() {
@@ -25,6 +28,7 @@ export default class OrderFilter extends Component {
       element.checked = false;
     });
     this.setState({ selected: '' });
+    this.context.filterOrder(NO_ORDER);
   }
 
   render() {
@@ -32,6 +36,7 @@ export default class OrderFilter extends Component {
       <Card>
         <Card.Header>
           <div className="filter-header">
+            {console.log(this.context)}
             <h2 className="filter-header__text">Price</h2>
             {this.state.selected && (
               <AiOutlineCloseCircle
@@ -76,5 +81,4 @@ export default class OrderFilter extends Component {
     );
   }
 }
-const ORDER_BY_ASC = 'order_asc';
-const ORDER_BY_DESC = 'order_des';
+OrderFilter.contextType = AppContext;

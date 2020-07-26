@@ -525,4 +525,22 @@ const phones = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
   },
 ];
-export default phones;
+function compare(a, b) {
+  let comparison = 0;
+  if (a.price > b.price) {
+    comparison = 1;
+  } else if (a.price < b.price) {
+    comparison = -1;
+  }
+  return comparison;
+}
+const orderByAsc = () => {
+  const value = phones.sort(compare);
+  return value;
+};
+const orderByDes = () => {
+  const value = phones.sort(compare).reverse();
+  return value;
+};
+const defaultOrder = () => phones;
+export { orderByAsc, orderByDes, defaultOrder };
