@@ -1,4 +1,4 @@
-export const brands = [
+const brands = [
   'apple',
   'huawei',
   'meizu',
@@ -7,3 +7,5 @@ export const brands = [
   'xiaomi',
   'asus',
 ];
+
+export default brands;

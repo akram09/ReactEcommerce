@@ -535,11 +535,11 @@ function compare(a, b) {
   return comparison;
 }
 const orderByAsc = () => {
-  const value = phones.sort(compare);
+  const value = [...phones].sort(compare);
   return value;
 };
 const orderByDes = () => {
-  const value = phones.sort(compare).reverse();
+  const value = [...phones].sort(compare).reverse();
   return value;
 };
 const defaultOrder = () => phones;

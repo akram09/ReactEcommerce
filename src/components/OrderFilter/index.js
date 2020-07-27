@@ -36,7 +36,6 @@ export default class OrderFilter extends Component {
       <Card>
         <Card.Header>
           <div className="filter-header">
-            {console.log(this.context)}
             <h2 className="filter-header__text">Price</h2>
             {this.state.selected && (
               <AiOutlineCloseCircle

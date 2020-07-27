@@ -19,7 +19,7 @@ function App() {
     <AppProvider>
       <Router>
         <>
-          <Header cartSize={2} />
+          <Header />
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/products" />} />
             <Route exact path="/products" component={Home} />
