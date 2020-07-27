@@ -4,13 +4,11 @@ import FilterBar from '../../containers/FilterBar';
 
 function Home() {
   return (
-    <div>
-      <Container>
-        <Row>
-          <FilterBar />
-        </Row>
-      </Container>
-    </div>
+    <Container style={{ paddingTop: '6rem' }}>
+      <Row>
+        <FilterBar />
+      </Row>
+    </Container>
   );
 }
 

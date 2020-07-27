@@ -1,10 +1,11 @@
 import React from 'react';
+import './index.scss';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import AppConsumer from '../../context/consumer';
 
 function BrandFilter() {
   return (
-    <Card>
+    <Card className="mb-3">
       <Card.Header>
         <h3>Brands</h3>
       </Card.Header>
@@ -13,12 +14,11 @@ function BrandFilter() {
           {(context) => {
             const brandsWithCount = mapBrandsToNumbers(context.products);
             return context.brands.map((brand) => (
-              <ListGroupItem>
-                <label
+              <ListGroupItem style={{ padding: '0rem' }}>
+                <div
                   className="custom-checkbox text-capitalize"
                   htmlFor={`checkbox-${brand}`}
                 >
-                  {brand} ({brandsWithCount[brand]})
                   <input
                     type="checkbox"
                     id={`checkbox-${brand}`}
@@ -26,8 +26,13 @@ function BrandFilter() {
                     className="custom-checkbox__input"
                     // onInput={handleSelectBox}
                   />
-                  <span className="custom-checkbox__span"></span>
-                </label>
+                  <label
+                    className="custom-checkbox__label"
+                    htmlFor={`checkbox-${brand}`}
+                  >
+                    {brand} ({brandsWithCount[brand]})
+                  </label>
+                </div>
               </ListGroupItem>
             ));
           }}
