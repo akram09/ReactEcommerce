@@ -14,7 +14,7 @@ function BrandFilter() {
           {(context) => {
             const brandsWithCount = mapBrandsToNumbers(context.products);
             return context.brands.map((brand) => (
-              <ListGroupItem style={{ padding: '0rem' }}>
+              <ListGroupItem key={brand} style={{ padding: '0rem' }}>
                 <div
                   className="custom-checkbox text-capitalize"
                   htmlFor={`checkbox-${brand}`}

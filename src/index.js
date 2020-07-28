@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
 import AppProvider from './context/provider';
+
 // react router
 
 ReactDOM.render(<App />, document.getElementById('root'));
