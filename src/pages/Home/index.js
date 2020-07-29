@@ -5,7 +5,7 @@ import ProductsList from '../../containers/ProductsList';
 
 function Home() {
   return (
-    <Container style={{ paddingTop: '6rem' }}>
+    <Container style={{ paddingTop: '6rem', paddingBottom: '6rem' }}>
       <Row>
         <FilterBar />
         <ProductsList></ProductsList>

@@ -4,6 +4,7 @@ import ProductsPagination from '../../components/ProductsPagination';
 import LayoutMode from '../../components/LayoutMode';
 import { paginateProducts } from '../../utils';
 import AppConsumer from '../../context/consumer';
+import Product from '../../components/Product';
 export default class ProductsList extends Component {
   constructor() {
     super();
@@ -77,9 +78,13 @@ export default class ProductsList extends Component {
                 context.products,
                 this.state.currentPage,
                 this.state.itemsPerPage,
-              ).map((item) => console.log(item))}
+              ).map((product) => (
+                <div className={`col-lg-${this.state.colValue} col-md-6 mb-4`}>
+                  <Product key={product.id} product={product} />
+                </div>
+              ))}
             </Row>
-            <Row>
+            <Row className="justify-content-end">
               <ProductsPagination
                 pagesNumber={context.products.length / this.state.itemsPerPage}
                 currentPage={this.state.currentPage}

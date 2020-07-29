@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './index.scss';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './index.scss';
 import { cumulativeOffSet, formatMoney } from '../../utils';
 import SlideDots from '../SlideDots';
 
@@ -68,7 +68,7 @@ export default class Product extends Component {
           to={`/product/${this.props.product.id}`}
           className="product__link"
         >
-          <Card.Image
+          <Card.Img
             variant="top"
             className="product__img"
             onMouseMove={this.handleImageChange}
@@ -92,7 +92,7 @@ export default class Product extends Component {
             </Link>
           </h4>
           <h5 className="product__price">
-            ${formatMoney(this.props.product.price)}
+            {formatMoney(this.props.product.price)}
           </h5>
           <p className="card-text product__description">
             {this.props.product.description}
