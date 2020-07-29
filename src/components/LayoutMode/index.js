@@ -7,6 +7,7 @@ function LayoutMode(props) {
   return (
     <div
       className="layout-mode"
+      aria-hidden="true"
       onClick={() => props.onClick(props.itemsNumber)}
     >
       {_.range(props.itemsNumber).map((i) => (

@@ -16,3 +16,6 @@ export const cumulativeOffSet = (e) => {
 
 export const formatMoney = (price) =>
   price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+export const paginateProducts = (products, currentPage, perPage) =>
+  products.slice((currentPage - 1) * perPage, currentPage * perPage);
