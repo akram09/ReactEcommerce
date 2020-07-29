@@ -80,9 +80,9 @@ export default class Product extends Component {
             ref={this.imageRef}
           />
           <SlideDots
-            len={this.props.product.images.length}
-            activeItem={this.state.activeItem}
-            changeItem={this.changeImage}
+            dotsNumber={this.props.product.images.length}
+            activeItemIndex={this.state.activeItem}
+            onItemChange={this.changeImage}
           />
         </Link>
         <Card.Body className="product__text">
