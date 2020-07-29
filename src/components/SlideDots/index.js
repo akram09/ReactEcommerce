@@ -4,7 +4,7 @@ import _ from 'lodash';
 import './index.scss';
 
 const SlideDots = (props) => (
-  <div className="dots-container">
+  <div className="dots">
     {_.range(props.dotsNumber).map((i) => (
       <button
         onClick={() => props.onItemChange(i)}

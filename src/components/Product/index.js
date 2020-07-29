@@ -14,6 +14,9 @@ export default class Product extends Component {
       activeItem: 0,
     };
     this.imageRef = React.createRef();
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+    this.changeImage = this.changeImage.bind(this);
   }
 
   handleImageChange(e) {
