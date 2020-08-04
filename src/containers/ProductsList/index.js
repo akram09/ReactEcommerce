@@ -12,7 +12,6 @@ export default class ProductsList extends Component {
       gridValue: 3,
       itemsPerPage: 12,
       currentPage: 1,
-      pagesToShow: 3,
       colValue: 4,
     };
     this.changeLayout = this.changeLayout.bind(this);
@@ -79,8 +78,11 @@ export default class ProductsList extends Component {
                 this.state.currentPage,
                 this.state.itemsPerPage,
               ).map((product) => (
-                <div className={`col-lg-${this.state.colValue} col-md-6 mb-4`}>
-                  <Product key={product.id} product={product} />
+                <div
+                  key={product.id}
+                  className={`col-lg-${this.state.colValue} col-md-6 mb-4`}
+                >
+                  <Product product={product} />
                 </div>
               ))}
             </Row>

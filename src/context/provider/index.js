@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from '..';
-import { orderByAsc, orderByDes, defaultOrder } from '../../data/phones';
+import {
+  orderByAsc,
+  orderByDes,
+  defaultOrder,
+  filterBrand,
+} from '../../data/phones';
 import { ORDER_BY_ASC, ORDER_BY_DESC } from '../actions';
 import brands from '../../data/brands';
 
@@ -10,6 +15,7 @@ export class AppProvider extends Component {
     super(props);
     this.state = {
       brands,
+      brandsFilter: [],
       products: defaultOrder(),
       cart: {},
     };
@@ -35,8 +41,24 @@ export class AppProvider extends Component {
                 break;
             }
           },
+          filters: (brand) => {
+            if (this.state.brandsFilter.includes(brand)) {
+              this.setState((prevState) => ({
+                brandsFilter: prevState.brandsFilter.filter((b) => b !== brand),
+                products: filterBrand(
+                  prevState.brandsFilter.filter((b) => b !== brand),
+                ),
+              }));
+            } else {
+              this.setState((prevState) => ({
+                brandsFilter: prevState.brandsFilter.concat([brand]),
+                products: filterBrand(prevState.brandsFilter.concat([brand])),
+              }));
+            }
+          },
         }}
       >
+        {console.log(this.state)}
         {this.props.children}
       </AppContext.Provider>
     );

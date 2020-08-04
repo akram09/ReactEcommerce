@@ -24,7 +24,7 @@ function BrandFilter() {
                     id={`checkbox-${brand}`}
                     name={brand}
                     className="custom-checkbox__input"
-                    // onInput={handleSelectBox}
+                    onInput={() => context.filters(brand)}
                   />
                   <label
                     className="custom-checkbox__label"

@@ -7,6 +7,7 @@ const SlideDots = (props) => (
   <div className="dots">
     {_.range(props.dotsNumber).map((i) => (
       <button
+        key={i}
         onClick={() => props.onItemChange(i)}
         type="button"
         className={i === props.activeItemIndex ? 'dot active' : 'dot'}

@@ -543,4 +543,9 @@ const orderByDes = () => {
   return value;
 };
 const defaultOrder = () => phones;
-export { orderByAsc, orderByDes, defaultOrder };
+
+const filterBrand = (brands) => {
+  console.log('BRANDS FILTER ', brands);
+  return [...phones].filter((phone) => brands.includes(phone.brand));
+};
+export { orderByAsc, orderByDes, defaultOrder, filterBrand };
