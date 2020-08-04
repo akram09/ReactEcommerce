@@ -82,7 +82,7 @@ export default class ProductsList extends Component {
                   key={product.id}
                   className={`col-lg-${this.state.colValue} col-md-6 mb-4`}
                 >
-                  <Product product={product} />
+                  <Product product={product} onAddToCart={context.addToCart} />
                 </div>
               ))}
             </Row>

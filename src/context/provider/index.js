@@ -12,7 +12,7 @@ export class AppProvider extends Component {
       brandsFilter: [],
       orderType: undefined,
       products: applyFilters(undefined, undefined),
-      cart: {},
+      cart: [],
     };
   }
 
@@ -47,6 +47,11 @@ export class AppProvider extends Component {
                 ),
               }));
             }
+          },
+          addToCart: (product) => {
+            this.setState((prevState) => ({
+              cart: prevState.cart.concat([product]),
+            }));
           },
         }}
       >

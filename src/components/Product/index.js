@@ -103,7 +103,7 @@ export default class Product extends Component {
           <Button
             variant="info"
             onClick={() => {
-              console.log('clickedddd');
+              this.props.onAddToCart(this.props.product);
             }}
             className="product__add-to-cart"
           >
@@ -116,4 +116,5 @@ export default class Product extends Component {
 }
 Product.propTypes = {
   product: PropTypes.object.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };

@@ -21,7 +21,7 @@ function Header() {
               <Nav.Item>
                 <FaShoppingCart className="mr-2" />
                 Cart
-                {context.cart.length === 0 ? `{${context.cart.length}}` : ''}
+                {context.cart.length !== 0 ? `{${context.cart.length}}` : ''}
               </Nav.Item>
             </NavLink>
           </Nav>
