@@ -1,3 +1,5 @@
+import { ORDER_BY_ASC } from '../context/actions';
+
 const phones = [
   {
     title: 'Apple iPhone 7 Plus 32 GB (Apple Türkiye Garantili)',
@@ -534,20 +536,16 @@ function compare(a, b) {
   }
   return comparison;
 }
-const orderByAsc = () => {
-  const value = [...phones].sort(compare);
-  return value;
-};
-const orderByDes = () => {
-  const value = [...phones].sort(compare).reverse();
-  return value;
-};
-const defaultOrder = () => phones;
 
-const filterBrand = (brands) => {
-  if (brands.length === 0) {
-    return [...phones];
+function applyFilters(brands, orderType) {
+  let result = phones;
+  if (brands !== undefined && brands.length !== 0) {
+    result = [...phones].filter((phone) => brands.includes(phone.brand));
   }
-  return [...phones].filter((phone) => brands.includes(phone.brand));
-};
-export { orderByAsc, orderByDes, defaultOrder, filterBrand };
+  if (orderType === undefined) {
+    return result;
+  }
+  if (orderType === ORDER_BY_ASC) return [...result].sort(compare);
+  return [...result].sort(compare).reverse();
+}
+export { applyFilters };

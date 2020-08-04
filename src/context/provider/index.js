@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from '..';
-import {
-  orderByAsc,
-  orderByDes,
-  defaultOrder,
-  filterBrand,
-} from '../../data/phones';
-import { ORDER_BY_ASC, ORDER_BY_DESC } from '../actions';
+import { applyFilters } from '../../data/phones';
 import brands from '../../data/brands';
 
 export class AppProvider extends Component {
@@ -16,7 +10,8 @@ export class AppProvider extends Component {
     this.state = {
       brands,
       brandsFilter: [],
-      products: defaultOrder(),
+      orderType: undefined,
+      products: applyFilters(undefined, undefined),
       cart: {},
     };
   }
@@ -29,30 +24,27 @@ export class AppProvider extends Component {
           cart: this.state.cart,
           brands: this.state.brands,
           filterOrder: (orderType) => {
-            switch (orderType) {
-              case ORDER_BY_DESC:
-                this.setState({ products: orderByDes() });
-                break;
-              case ORDER_BY_ASC:
-                this.setState({ products: orderByAsc() });
-                break;
-              default:
-                this.setState({ products: defaultOrder() });
-                break;
-            }
+            this.setState((prevState) => ({
+              orderType,
+              products: applyFilters(prevState.brandsFilter, orderType),
+            }));
           },
           filters: (brand) => {
             if (this.state.brandsFilter.includes(brand)) {
               this.setState((prevState) => ({
                 brandsFilter: prevState.brandsFilter.filter((b) => b !== brand),
-                products: filterBrand(
+                products: applyFilters(
                   prevState.brandsFilter.filter((b) => b !== brand),
+                  prevState.orderType,
                 ),
               }));
             } else {
               this.setState((prevState) => ({
                 brandsFilter: prevState.brandsFilter.concat([brand]),
-                products: filterBrand(prevState.brandsFilter.concat([brand])),
+                products: applyFilters(
+                  prevState.brandsFilter.concat([brand]),
+                  prevState.orderType,
+                ),
               }));
             }
           },
