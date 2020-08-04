@@ -545,7 +545,9 @@ const orderByDes = () => {
 const defaultOrder = () => phones;
 
 const filterBrand = (brands) => {
-  console.log('BRANDS FILTER ', brands);
+  if (brands.length === 0) {
+    return [...phones];
+  }
   return [...phones].filter((phone) => brands.includes(phone.brand));
 };
 export { orderByAsc, orderByDes, defaultOrder, filterBrand };
