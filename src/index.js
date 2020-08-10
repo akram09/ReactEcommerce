@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
 import AppProvider from './context/provider';
 
 // react router
@@ -24,6 +25,7 @@ function App() {
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/products" />} />
             <Route exact path="/products" component={Home} />
+            <Route exact path="/product/:id" component={ProductDetails} />
           </Switch>
           <Footer />
         </>
