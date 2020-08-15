@@ -2,33 +2,37 @@ import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import AppConsumer from '../../context/consumer';
-function Header() {
-  return (
-    <AppConsumer>
-      {(context) => (
-        <Navbar bg="dark" expand="lg" fixed="top">
-          <NavLink to="/">
-            <Navbar.Brand className="text-light">ReactEcommerce</Navbar.Brand>
-          </NavLink>
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-          <Nav className="ml-auto">
-            <NavLink
-              to="/cart"
-              className="text-light"
-              style={{ textDecoration: 'none' }}
-            >
-              <Nav.Item>
-                <FaShoppingCart className="mr-2" />
-                Cart
-                {context.cart.length !== 0 ? `{${context.cart.length}}` : ''}
-              </Nav.Item>
-            </NavLink>
-          </Nav>
-        </Navbar>
-      )}
-    </AppConsumer>
-  );
-}
+const Header = (props) => (
+  <Navbar bg="dark" expand="lg" fixed="top">
+    <NavLink to="/">
+      <Navbar.Brand className="text-light">ReactEcommerce</Navbar.Brand>
+    </NavLink>
 
-export default Header;
+    <Nav className="ml-auto">
+      <NavLink
+        to="/cart"
+        className="text-light"
+        style={{ textDecoration: 'none' }}
+      >
+        <Nav.Item>
+          <FaShoppingCart className="mr-2" />
+          Cart
+          {props.cartLength !== 0 ? `{${props.cartLength}}` : ''}
+        </Nav.Item>
+      </NavLink>
+    </Nav>
+  </Navbar>
+);
+
+Header.propTypes = {
+  cartLength: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  cartLength: state.cart === undefined ? 0 : state.cart.length,
+});
+
+export default connect(mapStateToProps)(Header);

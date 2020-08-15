@@ -1,4 +1,6 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,14 +13,14 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
-import AppProvider from './context/provider';
+import rootReducer from './store/reducers';
 
 // react router
-
+const store = createStore(rootReducer);
 ReactDOM.render(<App />, document.getElementById('root'));
 function App() {
   return (
-    <AppProvider>
+    <Provider store={store}>
       <Router>
         <>
           <Header />
@@ -30,6 +32,6 @@ function App() {
           <Footer />
         </>
       </Router>
-    </AppProvider>
+    </Provider>
   );
 }
