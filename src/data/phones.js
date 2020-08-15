@@ -1,6 +1,6 @@
 import { ORDER_BY_ASC } from '../context/actions';
 
-const phones = [
+export const phones = [
   {
     title: 'Apple iPhone 7 Plus 32 GB (Apple Türkiye Garantili)',
     category: 'phone',
